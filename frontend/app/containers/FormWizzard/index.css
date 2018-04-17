@@ -1,0 +1,14 @@
+.form {
+  padding: 30px;
+  width: 700px;
+  margin: 100px auto;
+}
+
+.form_button {
+  margin-top: 25px!important;
+}
+
+.form_field {
+  display: block;
+  margin: 3px 5px;
+}

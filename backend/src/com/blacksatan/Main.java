@@ -1,88 +1,31 @@
 package com.blacksatan;
 
-import com.blacksatan.sport.FuzzySetTrapezoid;
-import com.blacksatan.sport.FuzzySetTrapezoidIntervals;
+import com.blacksatan.dev.FuzzyAlgorithmBuilder;
+import com.blacksatan.fuzzy.*;
+import com.blacksatan.server.QuestServer;
+import com.blacksatan.dev.FuzzySetTrapezoid;
+import com.blacksatan.dev.FuzzySetTrapezoidIntervals;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
-    public static List<Rule> getRules() {
-        return new ArrayList<Rule>() {{
-            add(new Rule(new ArrayList<Condition>() {{
-                    add(new Condition("Morning or Lunch", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.firstDayPartInterval))
-                    );
-                    add(new Condition("Good Feeling", new Variable(1),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.goodFeelingInterval))
-                    );
-                }}, new ArrayList<Conclusion>(){{
-                    add(new Conclusion("Hard Work", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.hardWork), Conclusion.DEFAULT_WEIGHT)
-                    );
-                }}
-            ));
-            add(new Rule(new ArrayList<Condition>() {{
-                    add(new Condition("Evening", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.secondDayPartInterval))
-                    );
-                    add(new Condition("Good Feeling", new Variable(1),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.goodFeelingInterval))
-                    );
-                }}, new ArrayList<Conclusion>(){{
-                    add(new Conclusion("Normal Work", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.normalWork), Conclusion.DEFAULT_WEIGHT)
-                    );
-                }}
-            ));
-            add(new Rule(new ArrayList<Condition>() {{
-                    add(new Condition("Morning or Lunch", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.firstDayPartInterval))
-                    );
-                    add(new Condition("Middle Feeling", new Variable(1),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.middleFeelingInterval))
-                    );
-                }}, new ArrayList<Conclusion>(){{
-                    add(new Conclusion("Average Work", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.averageWork), Conclusion.DEFAULT_WEIGHT)
-                    );
-                }}
-            ));
-            add(new Rule(new ArrayList<Condition>() {{
-                    add(new Condition("Morning or Lunch", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.firstDayPartInterval))
-                    );
-                    add(new Condition("Bad Feeling", new Variable(1),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.badFeelingInterval))
-                    );
-                }}, new ArrayList<Conclusion>(){{
-                    add(new Conclusion("Relax Work", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.relaxWork), Conclusion.DEFAULT_WEIGHT)
-                    );
-                }}
-            ));
-            add(new Rule(new ArrayList<Condition>() {{
-                    add(new Condition("Evening", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.secondDayPartInterval))
-                    );
-                    add(new Condition("Bad Feeling", new Variable(1),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.badFeelingInterval))
-                    );
-                }}, new ArrayList<Conclusion>(){{
-                    add(new Conclusion("Not a Real Work", new Variable(0),
-                            new FuzzySetTrapezoid(FuzzySetTrapezoidIntervals.looksLikeWork), Conclusion.DEFAULT_WEIGHT)
-                    );
-                }}
-            ));
-        }};
-    }
-
 
     public static void main(String[] args) {
-        MamdaniAlgorithm algorithm = new MamdaniAlgorithm(getRules(), new double[] {8, 80});
-        List<Double> result = algorithm.run();
-        System.out.println("Algorithm result: " + Arrays.toString(result.toArray()));
+        //{"start":"1","prop":true,"level":"1","manage":"1","load":"10","plan":"2","salary":"500","zone":"1","change":"4","workers":"1"}
+        System.out.println("Hello world");
+        FuzzyAlgorithmBuilder b = new FuzzyAlgorithmBuilder();
+        System.out.println(b.build(new double[] {2, 2, 2, 2, 10, 2, 1500, 2, 2, 4}).run());
+//        try {
+//            QuestServer server = new QuestServer(5005);
+//            server.run();
+//        } catch (UnknownHostException e) {
+//            System.out.println(e);
+//        }
+//        MamdaniAlgorithm algorithm = new MamdaniAlgorithm(getRules(), new double[] {8, 80});
+//        List<Double> result = algorithm.run();
+//        System.out.println("Algorithm result: " + Arrays.toString(result.toArray()));
     }
 }
