@@ -20,6 +20,7 @@ import Typography from 'material-ui/Typography';
 
 import HomePage from 'containers/FormWizzard/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Results from 'containers/Results/Loadable';
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
       </AppBar>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/results/:result" component={Results} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

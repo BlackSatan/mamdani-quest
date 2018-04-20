@@ -5,9 +5,9 @@ import Button from 'material-ui/Button';
 export default class FormLayout extends React.PureComponent {
 
   render() {
-    const { handleSubmit, children } = this.props;
+    const { handleSubmit, onSubmit, children } = this.props;
     return (
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div>
           {children}
         </div>

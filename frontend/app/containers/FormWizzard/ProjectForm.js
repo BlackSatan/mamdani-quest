@@ -4,11 +4,7 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import { InputLabel } from 'material-ui/Input';
 import {
-  Checkbox,
-  RadioGroup,
   Select,
-  TextField,
-  Switch,
 } from 'redux-form-material-ui';
 import FormLayout from './FormLayout';
 import form from './form';

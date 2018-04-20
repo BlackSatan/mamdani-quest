@@ -5,9 +5,17 @@ import java.nio.ByteBuffer;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
+import com.blacksatan.dev.FuzzyAlgorithmBuilder;
 import org.java_websocket.WebSocket;
 import org.java_websocket.server.WebSocketServer;
 import org.java_websocket.handshake.ClientHandshake;
+import com.google.gson.Gson;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+import java.util.Collection;
+import com.blacksatan.fuzzy.MamdaniAlgorithm;
+import java.util.Map;
+
 
 public class QuestServer extends WebSocketServer {
 
@@ -23,8 +31,28 @@ public class QuestServer extends WebSocketServer {
 
     @Override
     public void onMessage( WebSocket conn, String message ) {
-        broadcast( message );
+        Gson gson = new Gson();
+        Type mapType = new TypeToken<Map<String, String>>(){}.getType();
+        Map<String, String> answers = gson.fromJson(message, mapType);
+
+        FuzzyAlgorithmBuilder b = new FuzzyAlgorithmBuilder();
+        MamdaniAlgorithm algorithm = b.build(new double[]{
+                Integer.parseInt(answers.get("start")),
+                Integer.parseInt(answers.get("prop")),
+                Integer.parseInt(answers.get("level")),
+                Integer.parseInt(answers.get("manage")),
+                Integer.parseInt(answers.get("load")),
+                Integer.parseInt(answers.get("plan")),
+                Integer.parseInt(answers.get("salary")),
+                Integer.parseInt(answers.get("zone")),
+                Integer.parseInt(answers.get("change")),
+                Integer.parseInt(answers.get("workers")),
+        });
+        Double result = algorithm.run().get(0);
+        Integer numResult = result.isNaN() ? 1 : result.intValue();
+        conn.send(gson.toJson(numResult));
         System.out.println( conn + ": " + message );
+        System.out.println(result);
     }
 
     @Override

@@ -13,15 +13,15 @@ public class FuzzySetTrapezoidIntervals {
 
     public static List<Integer> lowLoad = Arrays.asList(1, 1, 50, 100);
     public static List<Integer> middleLoad = Arrays.asList(50, 100, 500, 1000);
-    public static List<Integer> highLoad = Arrays.asList(1000, 10000, 1000000, 1000000);
+    public static List<Integer> highLoad = Arrays.asList(500, 10000, 1000000, 1000000);
 
     public static List<Integer> lowSalary = Arrays.asList(1, 1, 500, 1300);
     public static List<Integer> middleSalary = Arrays.asList(1000, 1500, 2500, 3000);
     public static List<Integer> highSalary = Arrays.asList(3000, 5000, 100000, 100000);
 
-    public static List<Integer> smallTeam = Arrays.asList(1, 1, 3, 5);
-    public static List<Integer> avgTeam = Arrays.asList(3, 8, 15, 20);
-    public static List<Integer> bigTeam = Arrays.asList(18, 25, 1000, 1000);
+    public static List<Integer> smallTeam = Arrays.asList(1, 1, 3, 15);
+    public static List<Integer> avgTeam = Arrays.asList(3, 8, 15, 70);
+    public static List<Integer> bigTeam = Arrays.asList(8, 25, 1000, 1000);
 
     public static List<Integer> wpStack = Arrays.asList(0, 0, 5, 10);
     public static List<Integer> laraStack = Arrays.asList(9, 15, 20, 25);

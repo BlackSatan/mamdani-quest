@@ -22,7 +22,6 @@ public class MamdaniAlgorithm {
         List<Double> fuzzificated = fuzzification(inputData);
         System.out.println(Arrays.toString(fuzzificated.toArray()));
         List<Double> aggregated = aggregation(fuzzificated);
-        System.out.println(Arrays.toString(aggregated.toArray()));
         List<ActivatedFuzzySet> activated = activation(aggregated);
         List<UnionOfFuzzySets> accumulated = accumulation(activated);
         return defuzzification(accumulated);
